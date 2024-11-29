@@ -1,0 +1,107 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if (SignInManager != null && !SignInManager.IsSignedIn(User))
+    {
+        <div class="container">
+            <div class=" mt-4" role="alert">
+                <h4 class="alert-heading">¡Bienvenido al Sistema Banco de Sangre!</h4>
+                <p>
+                    Gracias por unirte a nuestra comunidad de héroes que salvan vidas a través de la donación de sangre. Tu generosidad es fundamental para ayudar a personas en situaciones críticas. Cada gota cuenta, y tu aporte puede marcar la diferencia en la vida de alguien.
+                    Por tu colaboración, podemos fortalecer nuestra red de donantes y garantizar que la sangre esté disponible cuando más se necesita. Al completar este formulario, te aseguras de que, en momentos de emergencia, tu donación esté lista para salvar vidas.
+                    ¡Comencemos a salvar vidas hoy!
+                </p>
+                <hr>
+                <p class="mb-0">Si necesitas ayuda, no dudes en contactar con nuestro equipo de soporte.</p>
+            </div>
+        </div>
+    }
+   @if (SignInManager.IsSignedIn(User))
+    {
+    @await Html.PartialAsync("~/Views/ControlDonaciones/CreateHome.cshtml")
+    }
+    @if (SignInManager != null && !SignInManager.IsSignedIn(User))
+    {
+        <!-- Carrusel de imágenes -->
+        <div class="container mt-5">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-65" src="~/images/img1.jpg" alt="Primer slide" width="400" height="750">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Donaciones seguras</h5>
+                            <p>Garantizamos procesos seguros para todos los donantes.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-65" src="~/images/img2.jpg" alt="Segundo slide" width="400" height="750">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Salva vidas</h5>
+                            <p>Tu donación puede hacer la diferencia.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-65" src="~/images/img3.jpg" alt="Tercer slide" width="400" height="750">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Únete a la causa</h5>
+                            <p>Hazte donante y ayuda a quienes más lo necesitan.</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                </a>
+            </div>
+        </div>
+    }
+
+</div>
+
+  <style>
+    /* Contenedor del carrusel */
+    .carousel {
+        width: 100%; /* Asegura que el carrusel ocupe todo el ancho disponible */
+        height: 400px; /* Ajusta la altura del carrusel a un tamaño de banner */
+        margin: 0 auto; /* Centra el carrusel horizontalmente */
+    }
+
+    /* Estilo de las imágenes del carrusel */
+    .carousel-item img {
+        width: 100%; /* Hace que las imágenes ocupen todo el ancho del contenedor */
+        height: 100%; /* Hace que las imágenes ocupen toda la altura */
+        object-fit: cover; /* Asegura que las imágenes mantengan su proporción sin deformarse */
+    }
+
+    /* Estilo de las leyendas (captions) */
+    .carousel-caption {
+        bottom: 20px; /* Ajusta la posición vertical de las leyendas */
+        left: 20px;
+        right: 20px;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* Añade sombra al texto para mayor visibilidad */
+    }
+
+    .carousel-caption h5 {
+        font-size: 2rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1.2rem;
+    }
+</style>

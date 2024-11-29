@@ -1,0 +1,33 @@
+﻿/* custom-styles.css */
+
+/* Contenedor del carrusel */
+.carousel {
+    width: 100%; /* Asegura que el carrusel ocupe todo el ancho disponible */
+    height: 400px; /* Ajusta la altura del carrusel a un tamaño de banner */
+    margin: 0 auto; /* Centra el carrusel horizontalmente */
+}
+
+/* Estilo de las imágenes del carrusel */
+.carousel-item img {
+    width: 100%; /* Hace que las imágenes ocupen todo el ancho del contenedor */
+    height: 100%; /* Hace que las imágenes ocupen toda la altura */
+    object-fit: cover; /* Asegura que las imágenes mantengan su proporción sin deformarse */
+}
+
+/* Estilo de las leyendas (captions) */
+.carousel-caption {
+    bottom: 20px; /* Ajusta la posición vertical de las leyendas */
+    left: 20px;
+    right: 20px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* Añade sombra al texto para mayor visibilidad */
+}
+
+    .carousel-caption h5 {
+        font-size: 2rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1.2rem;
+    }
+    

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SistemaBancoDeSangre.Models.ControlDonaciones>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Centro de donaciones</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo centro de donaciones.</a>
+</p>
+@if (!Model.Any())
+{
+    <div class="alert alert-warning" role="alert">
+        No hay registros de donaciones disponibles.
+    </div>
+}else{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDonacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CentroDonacion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDonacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donante.GrupoSanguineo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CentroDonacion.NombreCentro)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Ver detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}
